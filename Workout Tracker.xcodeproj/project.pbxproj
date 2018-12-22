@@ -12,12 +12,12 @@
 		EC3F0DF821C772F000408183 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC3F0DF721C772F000408183 /* GoogleService-Info.plist */; };
 		EC3F0DFB21C775D800408183 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F0DFA21C775D800408183 /* Workout.swift */; };
 		EC3F0DFF21C77B1700408183 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F0DFE21C77B1700408183 /* ViewModel.swift */; };
+		EC3F0E0221C785D000408183 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F0E0121C785D000408183 /* ViewModelTests.swift */; };
 		ECA3314421C77110001BA258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3314321C77110001BA258 /* AppDelegate.swift */; };
 		ECA3314621C77110001BA258 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3314521C77110001BA258 /* ViewController.swift */; };
 		ECA3314921C77110001BA258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA3314721C77110001BA258 /* Main.storyboard */; };
 		ECA3314B21C77114001BA258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECA3314A21C77114001BA258 /* Assets.xcassets */; };
 		ECA3314E21C77114001BA258 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA3314C21C77114001BA258 /* LaunchScreen.storyboard */; };
-		ECA3315921C77114001BA258 /* Workout_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3315821C77114001BA258 /* Workout_TrackerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,8 @@
 		EC3F0DF721C772F000408183 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC3F0DFA21C775D800408183 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		EC3F0DFE21C77B1700408183 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		EC3F0E0021C785D000408183 /* Workout TrackerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Workout TrackerTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC3F0E0121C785D000408183 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		ECA3314021C77110001BA258 /* Workout Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA3314321C77110001BA258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECA3314521C77110001BA258 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +50,6 @@
 		ECA3314D21C77114001BA258 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECA3314F21C77114001BA258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECA3315421C77114001BA258 /* Workout TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Workout TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECA3315821C77114001BA258 /* Workout_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout_TrackerTests.swift; sourceTree = "<group>"; };
 		ECA3315A21C77114001BA258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,8 +148,9 @@
 		ECA3315721C77114001BA258 /* Workout TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				ECA3315821C77114001BA258 /* Workout_TrackerTests.swift */,
 				ECA3315A21C77114001BA258 /* Info.plist */,
+				EC3F0E0121C785D000408183 /* ViewModelTests.swift */,
+				EC3F0E0021C785D000408183 /* Workout TrackerTests-Bridging-Header.h */,
 			);
 			path = "Workout TrackerTests";
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 					};
 					ECA3315321C77114001BA258 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = ECA3313F21C77110001BA258;
 					};
 				};
@@ -342,7 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECA3315921C77114001BA258 /* Workout_TrackerTests.swift in Sources */,
+				EC3F0E0221C785D000408183 /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +541,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M697LKN47A;
 				INFOPLIST_FILE = "Workout TrackerTests/Info.plist";
@@ -548,6 +552,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christibbs.Workout-TrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Workout TrackerTests/Workout TrackerTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Workout Tracker.app/Workout Tracker";
@@ -560,6 +566,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M697LKN47A;
 				INFOPLIST_FILE = "Workout TrackerTests/Info.plist";
@@ -570,6 +577,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.christibbs.Workout-TrackerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Workout TrackerTests/Workout TrackerTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Workout Tracker.app/Workout Tracker";
