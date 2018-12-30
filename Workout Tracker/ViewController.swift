@@ -188,7 +188,9 @@ class ViewController: UIViewController {
     
     var i = 0
     while i < numberOfBars {
-      progressBars[i].backgroundColor = color
+      UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
+        progressBars[i].backgroundColor = color
+      }, completion: nil)
       i += 1
     }
   }
