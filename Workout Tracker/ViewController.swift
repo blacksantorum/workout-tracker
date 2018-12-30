@@ -63,6 +63,10 @@ class ViewController: UIViewController {
     showWorkoutDetailAlert()
   }
   
+  @IBAction func didTapRefreshButton(_ sender: Any) {
+    fetchWorkoutsAndUpdateUI()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     database = Firestore.firestore()

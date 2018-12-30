@@ -96,6 +96,17 @@
                                     <constraint firstAttribute="height" constant="44" id="hPw-Xv-lv0"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3Y-8u-3tT" userLabel="Refresh button">
+                                <rect key="frame" x="157.5" y="563" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Uyz-eP-CwX"/>
+                                    <constraint firstAttribute="height" constant="60" id="j5a-8F-HwU"/>
+                                </constraints>
+                                <state key="normal" image="refresh-arrow"/>
+                                <connections>
+                                    <action selector="didTapRefreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KjF-BE-5mN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -104,6 +115,7 @@
                             <constraint firstItem="kMd-LI-sQV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="AFb-mb-MVv"/>
                             <constraint firstItem="5El-0d-fix" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DIv-cN-vru"/>
                             <constraint firstItem="GP3-Pn-M3o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GH9-Hy-TTb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="T3Y-8u-3tT" secondAttribute="bottom" constant="44" id="LxJ-LX-zdc"/>
                             <constraint firstItem="kMd-LI-sQV" firstAttribute="top" secondItem="w8f-0J-Tth" secondAttribute="bottom" constant="8" id="MLh-TN-xaW"/>
                             <constraint firstItem="w8f-0J-Tth" firstAttribute="top" secondItem="X6M-qR-bpR" secondAttribute="bottom" constant="24" id="RV8-xw-aya"/>
                             <constraint firstItem="OoQ-fZ-sJU" firstAttribute="top" secondItem="8il-Hq-PDf" secondAttribute="bottom" constant="48" id="Rb6-a1-3A8"/>
@@ -113,6 +125,7 @@
                             <constraint firstItem="X6M-qR-bpR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f9R-K4-00H"/>
                             <constraint firstItem="8il-Hq-PDf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fKc-GP-RJl"/>
                             <constraint firstItem="5El-0d-fix" firstAttribute="top" secondItem="GP3-Pn-M3o" secondAttribute="bottom" constant="8" id="gLU-DZ-6Wv"/>
+                            <constraint firstItem="T3Y-8u-3tT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gjW-im-JjA"/>
                             <constraint firstItem="Yka-Yb-kBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iL9-Ge-ry7"/>
                             <constraint firstItem="X6M-qR-bpR" firstAttribute="top" secondItem="Yka-Yb-kBg" secondAttribute="bottom" constant="24" id="sfM-0k-nXN"/>
                             <constraint firstItem="w8f-0J-Tth" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tKg-xc-y4l"/>
@@ -139,4 +152,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="refresh-arrow" width="60" height="60"/>
+    </resources>
 </document>
