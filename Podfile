@@ -7,7 +7,7 @@ target 'Workout Tracker' do
 
   # Pods for Workout Tracker
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
 
   target 'Workout TrackerTests' do
     inherit! :search_paths

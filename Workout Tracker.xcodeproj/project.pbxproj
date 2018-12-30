@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2524FDBD21D8534300E162F2 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2524FDBC21D8534300E162F2 /* DateUtils.swift */; };
 		535AE94A0432FA1E053D7309 /* Pods_Workout_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62942C3D5F66238809FE62F9 /* Pods_Workout_Tracker.framework */; };
 		76C95CDB110C373AFFC1A98D /* Pods_Workout_TrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7874F28BC790C8B0ADB60445 /* Pods_Workout_TrackerTests.framework */; };
 		EC3F0DF821C772F000408183 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC3F0DF721C772F000408183 /* GoogleService-Info.plist */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		0EE84EA31EE6DF9F8AA46773 /* Pods-Workout TrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workout TrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Workout TrackerTests/Pods-Workout TrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		11DBF47A6030B548717C99E6 /* Pods-Workout Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workout Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Workout Tracker/Pods-Workout Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		2524FDBC21D8534300E162F2 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		296DE15C445600ADD8134715 /* Pods-Workout Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Workout Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Workout Tracker/Pods-Workout Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		62942C3D5F66238809FE62F9 /* Pods_Workout_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workout_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7874F28BC790C8B0ADB60445 /* Pods_Workout_TrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Workout_TrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2524FDBB21D8531400E162F2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2524FDBC21D8534300E162F2 /* DateUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		87E1F0F101D6DF11F8FFB08C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		ECA3314221C77110001BA258 /* Workout Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				2524FDBB21D8531400E162F2 /* Utils */,
 				EC3F0DF921C775B100408183 /* Model */,
 				EC3F0DFD21C77ADB00408183 /* View Model */,
 				EC3F0DF721C772F000408183 /* GoogleService-Info.plist */,
@@ -167,6 +178,7 @@
 				ECA3313D21C77110001BA258 /* Frameworks */,
 				ECA3313E21C77110001BA258 /* Resources */,
 				BA517FB591AD05694E1BB7F3 /* [CP] Embed Pods Frameworks */,
+				62DDC4B39BB8CE508C42577A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +269,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		62DDC4B39BB8CE508C42577A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Workout Tracker/Pods-Workout Tracker-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Workout Tracker/Pods-Workout Tracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		669A1F144E1C5116AC0FECB8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,7 +344,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Workout Tracker/Pods-Workout Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -318,7 +356,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -336,6 +378,7 @@
 			files = (
 				ECA3314621C77110001BA258 /* ViewController.swift in Sources */,
 				ECA3314421C77110001BA258 /* AppDelegate.swift in Sources */,
+				2524FDBD21D8534300E162F2 /* DateUtils.swift in Sources */,
 				EC3F0DFF21C77B1700408183 /* ViewModel.swift in Sources */,
 				EC3F0DFB21C775D800408183 /* Workout.swift in Sources */,
 			);

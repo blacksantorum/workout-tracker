@@ -19,52 +19,123 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP3-Pn-M3o" userLabel="Month label">
-                                <rect key="frame" x="175.5" y="44" width="24.5" height="18"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <rect key="frame" x="168.5" y="44" width="38" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5El-0d-fix" userLabel="Day label">
-                                <rect key="frame" x="178" y="70" width="19" height="36"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <rect key="frame" x="173" y="81" width="29.5" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8il-Hq-PDf">
-                                <rect key="frame" x="157.5" y="114" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8il-Hq-PDf" userLabel="Check in button">
+                                <rect key="frame" x="157.5" y="154.5" width="60" height="30"/>
                                 <state key="normal" title="Check in"/>
+                                <connections>
+                                    <action selector="didTapCheckInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eNf-m8-S4X"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS WEEK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoQ-fZ-sJU">
-                                <rect key="frame" x="143.5" y="152" width="88" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS WEEK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoQ-fZ-sJU" userLabel="This week label">
+                                <rect key="frame" x="141" y="232.5" width="93" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU (3/3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yka-Yb-kBg" userLabel="Your progress label">
+                                <rect key="frame" x="149" y="261" width="77.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU (0/3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yka-Yb-kBg">
-                                <rect key="frame" x="148.5" y="181" width="78" height="21"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X6M-qR-bpR" userLabel="Your progress bars">
+                                <rect key="frame" x="16" y="305.5" width="343" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdh-dl-FB8" userLabel="Your progress bar 1">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wM-tj-dkW" userLabel="Your progress bar 2">
+                                        <rect key="frame" x="117" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tk9-Yv-RzR" userLabel="Your progress bar 3">
+                                        <rect key="frame" x="234" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MLb-q2-wGG"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMILY (3/3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8f-0J-Tth" userLabel="Other progress label">
+                                <rect key="frame" x="143" y="373.5" width="89.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-LI-sQV" userLabel="Other progress bars">
+                                <rect key="frame" x="16" y="402" width="343" height="44"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewH-je-eYV" userLabel="Other progress bar 1">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGA-y3-Isv" userLabel="Other progress bar 2">
+                                        <rect key="frame" x="117" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkW-vP-7Pc" userLabel="Other progress bar 3">
+                                        <rect key="frame" x="234" y="0.0" width="109" height="44"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hPw-Xv-lv0"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X6M-qR-bpR" secondAttribute="trailing" constant="16" id="2Wk-c1-Gtr"/>
                             <constraint firstItem="OoQ-fZ-sJU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A6C-fv-oub"/>
+                            <constraint firstItem="kMd-LI-sQV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="AFb-mb-MVv"/>
                             <constraint firstItem="5El-0d-fix" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DIv-cN-vru"/>
                             <constraint firstItem="GP3-Pn-M3o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GH9-Hy-TTb"/>
-                            <constraint firstItem="OoQ-fZ-sJU" firstAttribute="top" secondItem="8il-Hq-PDf" secondAttribute="bottom" constant="8" id="Rb6-a1-3A8"/>
+                            <constraint firstItem="kMd-LI-sQV" firstAttribute="top" secondItem="w8f-0J-Tth" secondAttribute="bottom" constant="8" id="MLh-TN-xaW"/>
+                            <constraint firstItem="w8f-0J-Tth" firstAttribute="top" secondItem="X6M-qR-bpR" secondAttribute="bottom" constant="24" id="RV8-xw-aya"/>
+                            <constraint firstItem="OoQ-fZ-sJU" firstAttribute="top" secondItem="8il-Hq-PDf" secondAttribute="bottom" constant="48" id="Rb6-a1-3A8"/>
                             <constraint firstItem="Yka-Yb-kBg" firstAttribute="top" secondItem="OoQ-fZ-sJU" secondAttribute="bottom" constant="8" id="Xf2-B9-94m"/>
-                            <constraint firstItem="8il-Hq-PDf" firstAttribute="top" secondItem="5El-0d-fix" secondAttribute="bottom" constant="8" id="Ype-8L-bFW"/>
+                            <constraint firstItem="8il-Hq-PDf" firstAttribute="top" secondItem="5El-0d-fix" secondAttribute="bottom" constant="16" id="Ype-8L-bFW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kMd-LI-sQV" secondAttribute="trailing" constant="16" id="cWX-RA-rAv"/>
+                            <constraint firstItem="X6M-qR-bpR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f9R-K4-00H"/>
                             <constraint firstItem="8il-Hq-PDf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fKc-GP-RJl"/>
                             <constraint firstItem="5El-0d-fix" firstAttribute="top" secondItem="GP3-Pn-M3o" secondAttribute="bottom" constant="8" id="gLU-DZ-6Wv"/>
                             <constraint firstItem="Yka-Yb-kBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iL9-Ge-ry7"/>
+                            <constraint firstItem="X6M-qR-bpR" firstAttribute="top" secondItem="Yka-Yb-kBg" secondAttribute="bottom" constant="24" id="sfM-0k-nXN"/>
+                            <constraint firstItem="w8f-0J-Tth" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tKg-xc-y4l"/>
                             <constraint firstItem="GP3-Pn-M3o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="y7S-d3-Uev"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="checkInButton" destination="8il-Hq-PDf" id="LW7-tj-K1d"/>
+                        <outlet property="dayLabel" destination="5El-0d-fix" id="Drp-w6-jNB"/>
+                        <outlet property="monthLabel" destination="GP3-Pn-M3o" id="8YU-Rr-7lP"/>
+                        <outlet property="otherProgressBarOne" destination="ewH-je-eYV" id="6H1-u8-kgK"/>
+                        <outlet property="otherProgressBarThree" destination="EkW-vP-7Pc" id="cT4-9v-dV2"/>
+                        <outlet property="otherProgressBarTwo" destination="lGA-y3-Isv" id="t2E-mi-Ehv"/>
+                        <outlet property="otherProgressLabel" destination="w8f-0J-Tth" id="nlD-rj-3Cp"/>
+                        <outlet property="yourProgressBarOne" destination="Wdh-dl-FB8" id="Fap-4w-tcd"/>
+                        <outlet property="yourProgressBarThree" destination="tk9-Yv-RzR" id="Zta-8g-jMI"/>
+                        <outlet property="yourProgressBarTwo" destination="9wM-tj-dkW" id="yPK-0R-9ri"/>
+                        <outlet property="yourProgressLabel" destination="Yka-Yb-kBg" id="APa-y4-lvt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

@@ -31,27 +31,43 @@ class ViewModel {
   }
   
   fileprivate let goalWorkoutDays = 3
+  fileprivate let dayInterval: TimeInterval = 60 * 60 * 24
   
   fileprivate func dateStringForFormat(_ format: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format
+    dateFormatter.timeZone = TimeZone(abbreviation: "PST")
     return dateFormatter.string(from: currentDate)
   }
   
   fileprivate var currentDate: Date
-  fileprivate var daysUntilEndOfWeek: Int
-  fileprivate var workouts: [Workout]
+  fileprivate var endOfWeek: Date
+  fileprivate var currentUser: String
   
-  init(currentDate: Date, daysUntilEndOfWeek: Int, workouts: [Workout]) {
+  // Publicly accessible for local check-ins.
+  var workouts: [Workout]
+  
+  init(currentUser: String, currentDate: Date, endOfWeek: Date, workouts: [Workout]) {
+    self.currentUser = currentUser
     self.currentDate = currentDate
-    self.daysUntilEndOfWeek = daysUntilEndOfWeek
+    self.endOfWeek = endOfWeek
     self.workouts = workouts
   }
   
   func progressBar(for user: String) -> ProgressBar {
-    let workoutsForUser = workouts.filter { $0.userId == user }.count
+    let workoutsForUser = workouts.filter { $0.userId == user }
     // How many days are left minus the amount of workouts the user needs.
-    let allowedOffDays = daysUntilEndOfWeek - (goalWorkoutDays - workoutsForUser)
+    
+    var referenceDate = hasAWorkoutToday(workouts: workoutsForUser) ?
+      currentDate.addingTimeInterval(dayInterval) : currentDate
+    
+    var daysUntilEndOfWeek = 0
+    while referenceDate.timeIntervalSince1970 < endOfWeek.timeIntervalSince1970 {
+      referenceDate = referenceDate.addingTimeInterval(dayInterval)
+      daysUntilEndOfWeek += 1
+    }
+    
+    let allowedOffDays = daysUntilEndOfWeek - (goalWorkoutDays - workoutsForUser.count)
     
     var progressBarColor = UIColor.clear
     if allowedOffDays > 0 {
@@ -62,11 +78,40 @@ class ViewModel {
       progressBarColor = UIColor.red
     }
     
-    return ProgressBar(bars: workoutsForUser, progressColor: progressBarColor)
+    return ProgressBar(bars: workoutsForUser.count, progressColor: progressBarColor)
   }
   
   func progressText(for user: String) -> String {
     let workoutsForUser = workouts.filter { $0.userId == user }.count
-    return "(\(workoutsForUser)/\(goalWorkoutDays)"
+    
+    let userString = currentUser == user ? "You" : user
+    return "\(userString) (\(workoutsForUser)/\(goalWorkoutDays))"
+  }
+  
+  func checkInButton(for user: String) -> CheckInButton {
+    let workoutsForUser = workouts.filter { $0.userId == user }
+    let userHasWorkedOutToday = hasAWorkoutToday(workouts: workoutsForUser)
+    
+    let emoji = (user == "Emily") ? "💪🏻" : "💪🏽"
+    
+    if userHasWorkedOutToday {
+      return CheckInButton(enabled: false, text: "You've already worked out today \(emoji)")
+    } else {
+      return CheckInButton(enabled: true, text: "Check in")
+    }
+  }
+  
+  func hasAWorkoutToday(workouts: [Workout]) -> Bool {
+    let calendar = DateUtils.PSTCalendar
+    let currentDateComponents = calendar.dateComponents([.day, .month, .year], from: currentDate)
+    for workout in workouts {
+      let workoutDateComponents = calendar.dateComponents([.day, .month, .year], from: workout.date)
+      if workoutDateComponents.day == currentDateComponents.day &&
+        workoutDateComponents.month == currentDateComponents.month &&
+        workoutDateComponents.year == currentDateComponents.year {
+        return true
+      }
+    }
+    return false
   }
 }
