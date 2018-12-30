@@ -70,7 +70,7 @@ class ViewModel {
     let allowedOffDays = daysUntilEndOfWeek - (goalWorkoutDays - workoutsForUser.count)
     
     var progressBarColor = UIColor.clear
-    if allowedOffDays > 0 {
+    if allowedOffDays > 0 || workoutsForUser.count >= goalWorkoutDays {
       progressBarColor = UIColor.green
     } else if allowedOffDays == 0 {
       progressBarColor = UIColor.yellow
@@ -82,23 +82,28 @@ class ViewModel {
   }
   
   func progressText(for user: String) -> String {
-    let workoutsForUser = workouts.filter { $0.userId == user }.count
-    
     let userString = currentUser == user ? "You" : user
-    return "\(userString) (\(workoutsForUser)/\(goalWorkoutDays))"
+    return "\(userString) (\(workoutsForUser(user).count)/\(goalWorkoutDays))"
   }
   
   func checkInButton(for user: String) -> CheckInButton {
     let workoutsForUser = workouts.filter { $0.userId == user }
     let userHasWorkedOutToday = hasAWorkoutToday(workouts: workoutsForUser)
     
-    let emoji = (user == "Emily") ? "💪🏻" : "💪🏽"
+    let workedOutTodayEmoji = (user == "Emily") ? "💪🏻" : "💪🏽"
+    let reachedGoalEmoji = (user == "Emily") ? "👸🏻" : "🤴🏽"
     
-    if userHasWorkedOutToday {
-      return CheckInButton(enabled: false, text: "You've already worked out today \(emoji)")
+    if workoutsForUser.count >= goalWorkoutDays {
+      return CheckInButton(enabled: false, text: "You've reached your goal for this week \(reachedGoalEmoji)")
+    } else if userHasWorkedOutToday {
+      return CheckInButton(enabled: false, text: "You've already worked out today \(workedOutTodayEmoji)")
     } else {
       return CheckInButton(enabled: true, text: "Check in")
     }
+  }
+  
+  func workoutsForUser(_ userId: String) -> [Workout] {
+    return workouts.filter { $0.userId == userId }
   }
   
   func hasAWorkoutToday(workouts: [Workout]) -> Bool {
