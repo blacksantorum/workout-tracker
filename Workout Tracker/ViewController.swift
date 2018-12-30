@@ -241,6 +241,7 @@ class ViewController: UIViewController {
     }
   }
   
+  /* Doesn't work
   fileprivate func addListener() {
     database.collection("workouts").whereField("date", isGreaterThan: DateUtils.startOfWeek.timeIntervalSince1970).whereField("date", isLessThan: DateUtils.endOfWeek.timeIntervalSince1970).addSnapshotListener { querySnapshot, error in
       guard let documents = querySnapshot?.documents else {
@@ -255,5 +256,6 @@ class ViewController: UIViewController {
       self.updateUI()
     }
   }
+ */
 }
 
