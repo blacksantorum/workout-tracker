@@ -20,11 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationDidBecomeActive(_ application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    guard let viewController = window?.rootViewController as? ViewController else {
+      assertionFailure("Root view controller isn't a ViewController")
+      return
+    }
+    viewController.fetchWorkoutsAndUpdateUI()
   }
   
   func applicationSignificantTimeChange(_ application: UIApplication) {
-    
+    guard let viewController = window?.rootViewController as? ViewController else {
+      assertionFailure("Root view controller isn't a ViewController")
+      return
+    }
+    viewController.fetchWorkoutsAndUpdateUI()
   }
 }
 

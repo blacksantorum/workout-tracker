@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     }
   }
   
-  fileprivate func fetchWorkoutsAndUpdateUI() {
+  func fetchWorkoutsAndUpdateUI() {
     guard let userId = userId else {
       assertionFailure("Calling fetch workouts without a user")
       return
