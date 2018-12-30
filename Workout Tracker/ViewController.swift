@@ -90,7 +90,7 @@ class ViewController: UIViewController {
   
   func fetchWorkoutsAndUpdateUI() {
     guard let userId = userId else {
-      assertionFailure("Calling fetch workouts without a user")
+      // assertionFailure("Calling fetch workouts without a user")
       return
     }
     fetchWorkouts { [weak self] (workouts) in
@@ -212,12 +212,14 @@ class ViewController: UIViewController {
   // MARK: Networking
   
   fileprivate func saveWorkoutToDatabase(_ workout: Workout) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
     var ref: DocumentReference? = nil
     ref = database.collection("workouts").addDocument(data: [
       "date": workout.date.timeIntervalSince1970,
       "desc": workout.desc,
       "userId": workout.userId
     ]) { err in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
       if let err = err {
         print("Error adding document: \(err)")
       } else {
@@ -227,7 +229,9 @@ class ViewController: UIViewController {
   }
   
   fileprivate func fetchWorkouts(completion: @escaping ([Workout]) -> Void) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
     _ = database.collection("workouts").whereField("date", isGreaterThan: DateUtils.startOfWeek.timeIntervalSince1970).whereField("date", isLessThan: DateUtils.endOfWeek.timeIntervalSince1970).getDocuments { (querySnapshot, error) in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
       var workoutObjects = [Workout]()
       guard let workouts = querySnapshot?.documents else {
         // assertionFailure("Workouts failed to load")
