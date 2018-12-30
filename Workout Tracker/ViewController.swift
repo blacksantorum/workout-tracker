@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
   }
   
   fileprivate var database: Firestore!
-  
+  fileprivate var audioPlayer: AVAudioPlayer?
   fileprivate var viewModel: ViewModel?
   fileprivate let users = ["Chris", "Emily"]
   fileprivate let userIdKey = "userId"
@@ -255,6 +256,28 @@ class ViewController: UIViewController {
     viewModel.workouts.append(w)
     updateUI()
     saveWorkoutToDatabase(w)
+    
+    let workoutsCount = viewModel.workouts.filter { $0.userId == userId }.count
+    var audioFilePath = ""
+    switch workoutsCount {
+    case 1:
+      audioFilePath = "first_workout"
+    case 2:
+      audioFilePath = "second_workout"
+    case 3:
+      audioFilePath = "complete_goal"
+    default:
+      audioFilePath = ""
+    }
+    
+    let path = Bundle.main.path(forResource: audioFilePath, ofType: "mp3")
+    guard let filePath = path else {
+      assertionFailure("Bad audio file")
+      return
+    }
+    let soundUrl = URL(fileURLWithPath: filePath)
+    self.audioPlayer = try? AVAudioPlayer(contentsOf: soundUrl)
+    audioPlayer?.play()
   }
   
   // MARK: Networking
