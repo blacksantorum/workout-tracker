@@ -27,4 +27,12 @@ class DateUtils: NSObject {
   static var endOfWeek: Date {
     return startOfWeek.addingTimeInterval((60 * 60 * 24 * 7) - 1)
   }
+  
+  static var startOfLastWeek: Date {
+    return startOfWeek.addingTimeInterval(-(60 * 60 * 24 * 7))
+  }
+  
+  static var endOfLastWeek: Date {
+    return startOfWeek.addingTimeInterval(-1)
+  }
 }

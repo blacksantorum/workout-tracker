@@ -51,6 +51,12 @@ class ViewController: UIViewController {
     }
   }
   
+  fileprivate var lastWeekTimestamp: String {
+    get {
+      return "\(DateUtils.startOfLastWeek.timeIntervalSince1970)-\(DateUtils.endOfLastWeek.timeIntervalSince1970)"
+    }
+  }
+  
   fileprivate var otherUserId: String {
     guard let userId = userId else {
       assertionFailure("There's no active user")
@@ -66,6 +72,8 @@ class ViewController: UIViewController {
   @IBAction func didTapRefreshButton(_ sender: Any) {
     fetchWorkoutsAndUpdateUI()
   }
+  
+  fileprivate let goalWorkoutDays = 3
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -93,13 +101,51 @@ class ViewController: UIViewController {
       // assertionFailure("Calling fetch workouts without a user")
       return
     }
-    fetchWorkouts { [weak self] (workouts) in
-      self?.viewModel = ViewModel(currentUser: userId,
+    fetchWorkouts(startDate: DateUtils.startOfWeek, endDate: DateUtils.endOfWeek) { [weak self] (workouts) in
+      guard let self = self else {
+        assertionFailure("There's no view controller")
+        return
+      }
+      self.viewModel = ViewModel(currentUser: userId,
                                   currentDate: Date(),
                                   endOfWeek: DateUtils.endOfWeek,
-                                  workouts: workouts)
-      self?.updateUI()
+                                  workouts: workouts,
+                                  goalWorkoutDays: self.goalWorkoutDays)
+      self.updateUI()
     }
+    
+    if !UserDefaults.standard.bool(forKey: lastWeekTimestamp) {
+      resolveLastWeek()
+    }
+  }
+  
+  fileprivate func resolveLastWeek() {
+    fetchWorkouts(startDate: DateUtils.startOfLastWeek,
+                  endDate: DateUtils.endOfLastWeek) { [weak self] workouts in
+      let chrisWorkoutsCount = workouts.filter { $0.userId == "Chris" }.count
+      let emilyWorkoutsCount = workouts.filter { $0.userId == "Emily" }.count
+      
+      guard let self = self else {
+        assertionFailure("There's no view controller")
+        return
+      }
+      
+      var event = ""
+      if chrisWorkoutsCount >= self.goalWorkoutDays && emilyWorkoutsCount >= self.goalWorkoutDays {
+        event = "both_won"
+      } else if chrisWorkoutsCount >= self.goalWorkoutDays && emilyWorkoutsCount < self.goalWorkoutDays {
+        event = "chris_won"
+      } else if chrisWorkoutsCount < self.goalWorkoutDays && emilyWorkoutsCount >= self.goalWorkoutDays {
+        event = "emily_won"
+      } else if chrisWorkoutsCount <= self.goalWorkoutDays && emilyWorkoutsCount <= self.goalWorkoutDays {
+        event = "nobody_won"
+      }
+                    
+      if event.count > 0 {
+        Analytics.logEvent(event, parameters: nil)
+        UserDefaults.standard.set(true, forKey: self.lastWeekTimestamp)
+      }
+     }
   }
   
   fileprivate func updateUI() {
@@ -228,9 +274,11 @@ class ViewController: UIViewController {
     }
   }
   
-  fileprivate func fetchWorkouts(completion: @escaping ([Workout]) -> Void) {
+  fileprivate func fetchWorkouts(startDate: Date,
+                                 endDate: Date,
+                                 completion: @escaping ([Workout]) -> Void) {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    _ = database.collection("workouts").whereField("date", isGreaterThan: DateUtils.startOfWeek.timeIntervalSince1970).whereField("date", isLessThan: DateUtils.endOfWeek.timeIntervalSince1970).getDocuments { (querySnapshot, error) in
+    _ = database.collection("workouts").whereField("date", isGreaterThan: startDate.timeIntervalSince1970).whereField("date", isLessThan: endDate.timeIntervalSince1970).getDocuments { (querySnapshot, error) in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
       var workoutObjects = [Workout]()
       guard let workouts = querySnapshot?.documents else {

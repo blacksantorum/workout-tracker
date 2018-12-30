@@ -30,7 +30,7 @@ class ViewModel {
     }
   }
   
-  fileprivate let goalWorkoutDays = 3
+  fileprivate let goalWorkoutDays: Int
   fileprivate let dayInterval: TimeInterval = 60 * 60 * 24
   
   fileprivate func dateStringForFormat(_ format: String) -> String {
@@ -47,11 +47,15 @@ class ViewModel {
   // Publicly accessible for local check-ins.
   var workouts: [Workout]
   
-  init(currentUser: String, currentDate: Date, endOfWeek: Date, workouts: [Workout]) {
+  init(currentUser: String,
+       currentDate: Date,
+       endOfWeek: Date, workouts: [Workout],
+       goalWorkoutDays: Int) {
     self.currentUser = currentUser
     self.currentDate = currentDate
     self.endOfWeek = endOfWeek
     self.workouts = workouts
+    self.goalWorkoutDays = goalWorkoutDays
   }
   
   func progressBar(for user: String) -> ProgressBar {
