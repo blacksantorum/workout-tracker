@@ -183,16 +183,20 @@ class ViewController: UIViewController {
   fileprivate func updateProgressBars(_ progressBars: [UIView],
                                       numberOfBars: Int,
                                       color: UIColor) {
-    for progressBar in progressBars {
-      progressBar.backgroundColor = UIColor.clear
+    var i = 0
+    while i < progressBars.count {
+      if i >= numberOfBars {
+        progressBars[i].backgroundColor = UIColor.clear
+      }
+      i += 1
     }
     
-    var i = 0
-    while i < numberOfBars {
+    var j = 0
+    while j < numberOfBars {
       UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut, animations: {
-        progressBars[i].backgroundColor = color
+        progressBars[j].backgroundColor = color
       }, completion: nil)
-      i += 1
+      j += 1
     }
   }
   
